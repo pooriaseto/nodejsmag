@@ -1,0 +1,124 @@
+header(class="header")
+    div(class="header__top d-mobile-none")
+        nav(class="navbar navbar-expand navbar-light")
+            div(class="container")
+                div(class="collapse navbar-collapse")
+                    ul(class="navbar-nav ml-auto")
+                        li(class="nav-item active")
+                            a(class="nav-link", href="#")
+                                | خانه
+                        
+                        li(class="nav-item")
+                            a(class="nav-link", href="#")
+                                | تماس با ما
+                        
+                        li(class="nav-item")
+                            a(class="nav-link", href="#")
+                                | درباره ما
+    
+    div(class="header__middle")
+        div(class="container header__middle-items")
+            form(class="mw-100")
+                div(class="search form-group")
+                    button(type="submit", class="search__btn")
+                        i(class="icons-search")
+                    input(type="text", class="form-control", placeholder="جستجو در به مگ")
+                
+            a(href="#")
+                img(data-src="./assets/images/logo.svg", height="30", width="155", class="lazy", alt="beh mag logo")
+            
+        
+    
+    div(class="header__bottom")
+
+        div(class="side-menu-open")
+            div(class="burger-menu")
+                div(class="line-menu")
+                div(class="line-menu")
+                div(class="line-menu")
+
+        div(class="menu-row", id="navbar")
+            div(class="container")
+                div(class="menu-content")
+                    nav
+                        ul(class="main-menu")
+                            li
+                                a(class="menu-link", href="/products/category/shoes")
+                                    span(class="menu-link-text")
+                                        | کفش
+                                    i(class="icons-angle-down")
+                                ul(class="dropdown-menu-item")
+                                    li
+                                        a(class="submenu-link", href="/products/category/hiking-boots")
+                                            | کفش کوهنوردی
+                                    li
+                                        a(class="submenu-link", href="/products/category/hiking-boots")
+                                            | کفش پیاده روی مردانه
+                                    li
+                                        a(class="submenu-link", href="/products/category/women-walking-shoes")
+                                            | کفش پیاده روی زنانه
+                                    li
+                                        a(class="submenu-link", href="/products/category/men-formal-shoes")
+                                            | کفش مجلسی مردانه
+                                    li
+                                        a(class="submenu-link", href="/products/category/men-sport-shoes")
+                                            | کفش ورزشی مردانه 
+                                    li
+                                        a(class="submenu-link", href="/products/category/men-sandals")
+                                            | صندل مردانه
+                
+            
+        div(class="side-nav-container")
+            div(class="humburger-menu-lines side-menu-close")
+            nav(class="side-menu-wrap")
+                ul(class="side-menu-ul")
+                    li(class="sidenav__item")
+                        span(data-action="open")
+                            | صفحات اصلی
+                        span(class="menu-plus-icon")
+                        ul(class="side-sub-menu")
+                            li
+                                a(class="submenu-link", href="/")
+                                    | خانه
+                            li(class="nav-item")
+                                a(class="submenu-link", href="/pages/seller")
+                                    | فروشنده شو
+                            li(class="nav-item")
+                                a(class="submenu-link", href="/contact-us")
+                                    | تماس با ما
+                            li(class="nav-item")
+                                a(class="submenu-link", href="/about-us")
+                                    | درباره ما
+                            li(class="nav-item")
+                                a(class="submenu-link", href="/shops")
+                                    | فروشگاه ها
+                            li(class="nav-item")
+                                a(class="submenu-link", href="/blog")
+                                    | مقالات
+                    
+                    li(class="sidenav__item")
+                        a(href="/products/category/shoes")
+                            | کفش
+                        span(class="menu-plus-icon")
+                        ul(class="side-sub-menu")
+                            li
+                                a(class="submenu-link", href="/products/category/hiking-boots")
+                                    | کفش کوهنوردی
+                            li
+                                a(class="submenu-link" , href="/products/category/men-walking-shoes")
+                                    |کفش پیاده روی مردانه
+                            li
+                                a(class="submenu-link" , href="/products/category/women-walking-shoes")
+                                    | کفش پیاده روی زنانه
+                            
+                            li
+                                a(class="submenu-link" , href="/products/category/men-formal-shoes")
+                                    | کفش مجلسی مردانه
+                                
+                            li
+                                a(class="submenu-link" , href="/products/category/men-sport-shoes")
+                                    | کفش ورزشی مردانه
+                                
+                            li
+                                a(class="submenu-link" , href="/products/category/men-sandals")
+                                    | صندل مردانه 

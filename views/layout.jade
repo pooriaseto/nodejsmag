@@ -17,73 +17,8 @@ html(lang="fa-IR" , dir="rtl")
 
   body
     block content
-
-    footer(class="footer")
-        div(class="container")
-            div(class="row")
-                div(class="col-12 pb-5")
-                    nav(class="navbar navbar-expand navbar-light flex-wrap p-0")
-                        a(class="navbar-brand", href="#")
-                            img(data-src="/assets/images/logo.svg", height="25", width="129", class="lazy",alt="beh mag logo")
-                        div(class="collapse navbar-collapse flex-wrap" id="navbarNav")
-                            ul(class="navbar-nav ml-auto flex-wrap footer__list")
-                                li(class="nav-item active")
-                                    a(class="nav-link", href="#")
-                                      |خانه
-                          
-                                li(class="nav-item")
-                                    a(class="nav-link", href="#")
-                                      |درباره ما
-                             
-                                li(class="nav-item")
-                                    a(class="nav-link", href="#")
-                                      |تماس با ما
-                        
-                div(class="col-lg-4")
-                    h4(class="pb-3")
-                      |اطلاع از آخرین مقالات به مگ
-                    span(class="d-block mb-3 text-muted")
-                        |شما کاربر عزیز می توانید برای اطلاع از آخرین مقالات ایمیل خود را وارد کنید.
-                    form(class="custom-form") 
-                        div(class="form-group")
-                            label(for="email")
-                              |ایمیل شما
-                            input(type="email" ,id="email" ,placeholder="example@mail.com" ,class="ltr form-control")
-                   
-                        div(class="form-group")
-                            input(type="submit", value="به من اطلاع دهید!", class="btn btn-primary")
-                      
-  
-          
-                div(class="col-lg-8 footer__socials")
-                    h4(class="pb-3")
-                      | به مگ در شبکه های اجتماعی
-                    ul(class="list-inline list-unstyled footer__list")
-                        li(class="list-inline-item")
-                            a(href="#", class="footer__icon")
-                                i(class="icons-linkedin")
-                       
-                     
-                        li(class="list-inline-item")
-                            a(href="#" ,class="footer__icon")
-                                i(class="icons-instagram")
-                        
-                  
-                        li(class="list-inline-item")
-                            a(href="#", class="footer__icon")
-                                i(class="icons-telegram")
-                           
-                        li(class="list-inline-item")
-                            a(href="#", class="footer__icon")
-                                i(class="icons-twitter")
-                            
-                        
-
-                div(class="col-12 pt-2 text-center")
-                    | تمامی حقوق مادی و معنوی 
-                    span(class="text-primary")
-                      | به مگ 
-                    | محفوظ است و هرگونه کپی برداری و انتشار غیر مجاز پیگرد قانونی دارد .
+    include components/header.jade
+    include components/footer.jade 
 
 
     div(class="back-to-top rounded text-center" id="back-to-top")
