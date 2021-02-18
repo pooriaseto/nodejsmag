@@ -1,0 +1,28 @@
+
+.back-to-top {
+    cursor: pointer;
+    z-index: 99;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+    visibility: hidden;
+    opacity: 0;
+    color: #fff;
+    background-color: $gray-600;
+    @extend .transition;
+}
+
+.back-to-top.active
+{
+    visibility: visible;
+    opacity: 1;
+}
+
+.back-to-top i {
+    line-height: 33px;
+    font-size: 1rem;
+}
+

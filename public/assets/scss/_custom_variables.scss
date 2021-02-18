@@ -1,0 +1,42 @@
+$font-family-base: 'IRANSans';
+$primary : #ff8f3c;
+
+$pagination-bg : #F0F2F5;
+$pagination-color : #878787;
+$pagination-hover-color : #fff;
+$pagination-hover-bg : $primary;
+$pagination-padding-x : 0.9rem;
+
+$link-hover-decoration : none;
+
+$card-border-color : #f0f2f5;
+
+$navbar-nav-link-padding-x : 1rem;
+
+$h1-font-size: 1.5rem;
+$h2-font-size: 1.3rem;
+$h3-font-size: 1.2rem;
+$h4-font-size: 1.1rem;
+$h5-font-size: 1rem;
+$h6-font-size: 0.9rem;
+
+$hr-margin-y : 1.5rem;
+$hr-margin-x : 1.5rem;
+$hr-border-color : #f0f2f5;
+
+$breadcrumb-bg : #f0f2f5;
+
+.transition {
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s
+}
+.line-height-lg
+{
+    line-height: 2;
+}
+.icons-2x {
+    font-size: 1rem * 2;
+}

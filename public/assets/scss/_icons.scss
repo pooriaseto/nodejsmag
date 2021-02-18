@@ -1,0 +1,213 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icons-font-family}';
+  src: url('../fonts/#{$icons-font-family}.ttf?al7our') format('truetype'),
+  url('../fonts/#{$icons-font-family}.woff?al7our') format('woff'),
+  url('../fonts/#{$icons-font-family}.svg?al7our##{$icons-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  font-display: swap;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icons-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icons-angle-down {
+  &:before {
+    content: $icons-angle-down;
+  }
+}
+
+.icons-angle-left {
+  &:before {
+    content: $icons-angle-left;
+  }
+}
+
+.icons-angle-right {
+  &:before {
+    content: $icons-angle-right;
+  }
+}
+
+.icons-angle-up {
+  &:before {
+    content: $icons-angle-up;
+  }
+}
+
+.icons-calendar {
+  &:before {
+    content: $icons-calendar;
+  }
+}
+
+.icons-check {
+  &:before {
+    content: $icons-check;
+  }
+}
+
+.icons-circle-notch {
+  &:before {
+    content: $icons-circle-notch;
+  }
+}
+
+.icons-clock {
+  &:before {
+    content: $icons-clock;
+  }
+}
+
+.icons-cog {
+  &:before {
+    content: $icons-cog;
+  }
+}
+
+.icons-comment {
+  &:before {
+    content: $icons-comment;
+  }
+}
+
+.icons-envelope {
+  &:before {
+    content: $icons-envelope;
+  }
+}
+
+.icons-eye {
+  &:before {
+    content: $icons-eye;
+  }
+}
+
+.icons-google {
+  &:before {
+    content: $icons-google;
+  }
+}
+
+.icons-heart {
+  &:before {
+    content: $icons-heart;
+  }
+}
+
+.icons-instagram {
+  &:before {
+    content: $icons-instagram;
+  }
+}
+
+.icons-link {
+  &:before {
+    content: $icons-link;
+  }
+}
+
+.icons-linkedin {
+  &:before {
+    content: $icons-linkedin;
+  }
+}
+
+.icons-list {
+  &:before {
+    content: $icons-list;
+  }
+}
+
+.icons-mobile {
+  &:before {
+    content: $icons-mobile;
+  }
+}
+
+.icons-pencil {
+  &:before {
+    content: $icons-pencil;
+  }
+}
+
+.icons-phone {
+  &:before {
+    content: $icons-phone;
+  }
+}
+
+.icons-search {
+  &:before {
+    content: $icons-search;
+  }
+}
+
+.icons-share-alt {
+  &:before {
+    content: $icons-share-alt;
+  }
+}
+
+.icons-sign-out {
+  &:before {
+    content: $icons-sign-out;
+  }
+}
+
+.icons-solid-heart {
+  &:before {
+    content: $icons-solid-heart;
+  }
+}
+
+.icons-telegram {
+  &:before {
+    content: $icons-telegram;
+  }
+}
+
+.icons-trash {
+  &:before {
+    content: $icons-trash;
+  }
+}
+
+.icons-twitter {
+  &:before {
+    content: $icons-twitter;
+  }
+}
+
+.icons-user {
+  &:before {
+    content: $icons-user;
+  }
+}
+
+.icons-user-cog {
+  &:before {
+    content: $icons-user-cog;
+  }
+}
+
+.icons-whatsapp {
+  &:before {
+    content: $icons-whatsapp;
+  }
+}

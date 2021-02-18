@@ -1,0 +1,32 @@
+﻿blockquote {
+    margin: 50px auto;
+    color: #555555;
+    background-color: #f9f9f9;
+    padding: 1.2em 50px 1.2em 30px;
+    border-right: 8px solid $primary;
+    line-height: 1.6;
+    position: relative;
+
+    p {
+        text-align: right;
+
+        margin: {
+            top: 0;
+            bottom: 0;
+        }
+    }
+}
+
+blockquote::before {
+    font-family: Arial;
+    content: "\201C";
+    color: $primary;
+    font-size: 4em;
+    position: absolute;
+    right: 10px;
+    top: -10px;
+}
+
+blockquote::after {
+    content: '';
+}
