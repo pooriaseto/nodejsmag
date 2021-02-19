@@ -1,0 +1,32 @@
+extends layout
+block content
+    section.section
+        .container
+            .row
+                .col-12
+                    h1.py-2
+                        | تماس با به مگ
+                    p
+                        | منتظر انتقادها و پیشنهادهای شما هستیم.
+                .col-lg-5.mb-5
+                    .text-right.text-mobile-center
+                    img.img-fluid.lazy(data-src='./assets/images/contactus.jpg' alt='contact us')
+                .col-lg-7
+                    form(method='POST')
+                        .form-group
+                            label(for='name')
+                                | نام 
+                                span.text-danger *
+                            input#name.form-control(type='text' name='name')
+                        .form-group
+                            label(for='emailValue')
+                                | ایمیل 
+                                span.text-danger *
+                            input#emailValue.form-control(type='email' name='email')
+                        .form-group
+                            label(for='message')
+                                | شرح پیام 
+                                span.text-danger *
+                            textarea#message.form-control(rows='5' type='text' name='message')
+                        .form-group
+                            input.btn.btn-primary(type='submit' value='ارسال پیام')

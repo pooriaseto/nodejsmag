@@ -1,0 +1,158 @@
+extends layout
+block content
+    section.section
+        .container
+            .row
+                section.col-12
+                    nav(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') خانه
+                            li.breadcrumb-item
+                                a(href='#') دسته اصلی
+                            li.breadcrumb-item
+                                a(href='#') دسته فرعی
+                            li.breadcrumb-item.active(aria-current='page')
+                                | تصاویر واقعی وان پلاس 9 5G فاش شد
+                article.col-xl-8.col-lg-8
+                    .card.article
+                        h1.article__title
+                            | تصاویر واقعی وان پلاس 9 5G فاش شد
+                        .article__header
+                            span
+                                i.icons-calendar.pl-1
+                                | جمعه 14 آذر 1399
+                            span
+                                i.icons-clock.pl-1
+                                | زمان تقریبی مطالعه 6 دقیقه
+                        .article__elements
+                            span#addLikeBtn(title='لایک')
+                                i.icons-heart.article__icon
+                            span#commentsBtn(title='نظرات')
+                                i.icons-comment.article__icon
+                            span#shareBtn(title='اشتراک گذاری')
+                                i.icons-share-alt.article__icon
+                        .article__text.text
+                            img.lazy(data-src='./assets/images/posts/thumb.jpg')
+                            p
+                                | تصاویر فاش‌شده از وان پلاس 9 5G، این گوشی را از تمامی زوایا در دنیای واقعی به ‌تصویر
+                                | می‌کشند تا با جدیدترین پرچم‌دار وان
+                                | پلاس از نزدیک آشنا شویم.
+                            h2
+                                | منبع اصلی خبر
+                            p
+                                | وان پلاس ۹ و وان پلاس ۹ پرو (OnePlus 9 Pro) در راه هستند و بر اساس شایعه‌های جدید، اندکی
+                                | زودتر از حد معمول در اواسط ماه
+                                | مارس ۲۰۲۱ (اواخر اسفند ۱۳۹۹) از راه خواهند رسید. تا پیش از انتشار گزارش‌های جدید،
+                                | اطلاعات درباره‌ی گوشی‌های سری وان پلاس
+                                | ۹ در همین حد بود؛ به‌علاوه در گزارشی مجزا اعلام شده بود این خانواده قرار است شامل عضو
+                                | سومی با نام وان پلاس 9E باشد.
+                                | همچنین به ‌لطف انتشار تعداد زیادی رندر از گوشی‌های جدید وان پلاس از سوی منبعی قابل
+                                | ‌اتکا، عملا می‌دانستیم دستگاه‌های
+                                | جدید شرکت چینی قرار است چه ظاهری داشته باشند.
+                            h2
+                                | اطراف سینی سیم‌کارت
+                            p
+                                | در همین راستا روز گذشته شاهد انتشار تصاویر و اطلاعات جدیدی از وان پلاس ۹ 5G بودیم. 
+                                | این‌طور که به ‌نظر می‌رسد، نمونه‌ی 
+                                | اولیه (پروتوتایپ) گوشی وان پلاس ۹ 5G به‌ دست برخی افراد رسیده؛ زیرا به‌تازگی تصاویری از 
+                                | نگاه نزدیک به وان پلاس ۹ 5G فاش 
+                                | شده است.
+                            .article__tags
+                            a.article__tags-item(href='#')
+                                | طراحی
+                            a.article__tags-item(href='#')
+                                | موبایل
+                            a.article__tags-item(href='#')
+                                | کیف
+                            a.article__tags-item(href='#')
+                                | سایت
+                    section#comments.my-4
+                        .card.mb-4
+                            .card-header.border-bottom-0.bg-transparent
+                                h4.pt-3 ارسال نظر
+                            .card-body
+                                .alert.alert-light.mb-3
+                                    | ایمیل شما منتشر نخواهد شد و در صورت پاسخ به نظر از طریق ایمیل به شما اطلاع رسانی می
+                                    | شود.
+                                form.custom-form
+                                .form-group
+                                    label(for='name')
+                                        | نام شما 
+                                        span.text-danger *
+                                    input#name.form-control.form-control--custom(type='text' name='name')
+                                .form-group
+                                    label(for='email')
+                                        | ایمیل 
+                                        span.text-danger *
+                                    input#email.form-control.form-control--custom(type='email' name='email')
+                                .form-group
+                                    label(for='text')
+                                        | شرح نظر 
+                                        span.text-danger *
+                                    textarea#text.form-control.form-control--custom(rows='5' type='text' name='text')
+                                .form-group
+                                    input.btn.btn-primary(type='submit' value='ارسال')
+                        .card.card--gray
+                            .card-body
+                                .comment
+                                    .comment__header
+                                        .comment__user
+                                            img.lazy.img-fluid.comment__img(data-src='./assets/images/avatar.jpg' width='64' height='64' alt='avatar')
+                                            span
+                                                | پوریا ستایش
+                                        .comment__date
+                                            | 5 روز پیش
+                                    .comment__desc
+                                        | در همین راستا روز گذشته شاهد انتشار تصاویر و اطلاعات جدیدی از وان پلاس ۹ 5G
+                                        | بودیم. این‌طور که به ‌نظر می‌رسد، نمونه‌ی
+                                    .comment__reply
+                                        a.btn.btn-sm.btn-outline-primary(href='#')
+                                            | پاسخ
+
+                aside.col-xl-4.col-lg-4.sticky
+                    .card.sidebar
+                        .card-header
+                            span.card-title
+                                | مطالب مرتبط
+                        .card-body
+                            .media
+                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-01.jpg' alt='Generic placeholder image')
+                                .media-body
+                                    h5
+                                        a.sidebar__title(href='#')
+                                            | بررسی جامع گوشی Samsung Galaxy Note 20 Ultra
+                                    span.sidebar__desc
+                                        i.icons-calendar.pl-1
+                                        | در
+                                        | 1399/10/15
+                            .media
+                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-02.jpg' alt='Generic placeholder image')
+                                .media-body
+                                    h5
+                                        a.sidebar__title(href='#')
+                                            | خرید بهترین دوربین تا 10 میلیون
+                                    span.sidebar__desc
+                                        i.icons-calendar.pl-1
+                                        | در
+                                        | 1399/10/15
+                            .media
+                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-03.jpg' alt='Generic placeholder image')
+                                .media-body
+                                    h5
+                                        a.sidebar__title(href='#')
+                                            | آموزش مقایسه کالا
+                                    span.sidebar__desc
+                                        i.icons-calendar.pl-1
+                                        | در
+                                        | 1399/10/15
+                            .media
+                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-04.jpg' alt='Generic placeholder image')
+                                .media-body
+                                    h5
+                                        a.sidebar__title(href='#')
+                                            | بررسی جامع گوشی Samsung Galaxy
+                                    span.sidebar__desc
+                                        i.icons-calendar.pl-1
+                                        | در
+                                        | 1399/10/15
