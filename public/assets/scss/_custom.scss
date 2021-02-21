@@ -397,9 +397,13 @@
         justify-content: flex-end;
         flex-wrap: wrap;
         padding: 0;
+        li{
+            @extend .d-flex;
+        }
     }
 
     &__categories-item {
+        display: block;
         margin-right: 0.5rem;
         padding: 0.2rem 0.7rem;
         color: $gray-700;
