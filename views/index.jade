@@ -111,7 +111,7 @@ block content
                     each post in posts
                         article.box
                             a(href="/maincat/subcat/" + post.slug, class="box__img")
-                                img(data-src="./assets/images/"+ post.thumbnail, class="lazy", alt="image")
+                                img(data-src="./assets/images/"+ post.imageUrl, class="lazy", alt="image")
                             .box__body
                                 header
                                     ul.box__categories
