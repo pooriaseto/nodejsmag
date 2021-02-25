@@ -9,10 +9,9 @@ import {
   Divider,
   Grid,
   Typography,
-  makeStyles
+  makeStyles,
+  Button
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductCard = ({ className, product, ...rest }) => {
+const ArticleCard = ({ className, article, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -43,8 +42,8 @@ const ProductCard = ({ className, product, ...rest }) => {
           mb={3}
         >
           <Avatar
-            alt="Product"
-            src={product.media}
+            alt="Article"
+            src={article.media}
             variant="square"
           />
         </Box>
@@ -54,14 +53,14 @@ const ProductCard = ({ className, product, ...rest }) => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          {article.title}
         </Typography>
         <Typography
           align="center"
           color="textPrimary"
           variant="body1"
         >
-          {product.description}
+          {article.description}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -76,35 +75,10 @@ const ProductCard = ({ className, product, ...rest }) => {
             className={classes.statsItem}
             item
           >
-            <AccessTimeIcon
-              className={classes.statsIcon}
-              color="action"
-            />
-            <Typography
-              color="textSecondary"
-              display="inline"
-              variant="body2"
-            >
-              Updated 2hr ago
-            </Typography>
-          </Grid>
-          <Grid
-            className={classes.statsItem}
-            item
-          >
-            <GetAppIcon
-              className={classes.statsIcon}
-              color="action"
-            />
-            <Typography
-              color="textSecondary"
-              display="inline"
-              variant="body2"
-            >
-              {product.totalDownloads}
-              {' '}
-              Downloads
-            </Typography>
+            <Button variant="contained" color="primary" size="small">
+              Show
+</Button>
+
           </Grid>
         </Grid>
       </Box>
@@ -112,9 +86,9 @@ const ProductCard = ({ className, product, ...rest }) => {
   );
 };
 
-ProductCard.propTypes = {
+ArticleCard.propTypes = {
   className: PropTypes.string,
   product: PropTypes.object.isRequired
 };
 
-export default ProductCard;
+export default ArticleCard;
