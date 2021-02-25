@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const postsController = require("../controllers/PostsController");
+const homeController = require("../controllers/HomeController");
 
-router.get("/", postsController.findAll);
+router.get("/", homeController.index);
 
 router.get('/single-post', function (req, res, next) {
   res.render('singlePost', { title: 'aboutUs' });

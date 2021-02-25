@@ -1,30 +1,30 @@
 const sql = require("./db.js");
 
 // constructor
-class Post {
-    constructor(post) {
-        this.id = post.id;
-        this.title = post.title;
-        this.slug = post.slug;
-        this.description = post.title;
-        this.imageUrl = post.imageUrl;
-        this.visit = post.visit;
-        this.like = post.like;
-        this.creation_time = post.creation_time;
-        this.modification_time = post.modification_time;
+class Category {
+    constructor(category) {
+        this.id = category.id;
+        this.title = category.title;
+        this.slug = category.slug;
+        this.description = category.title;
+        this.imageUrl = category.imageUrl;
+        this.visit = category.visit;
+        this.like = category.like;
+        this.creation_time = category.creation_time;
+        this.modification_time = category.modification_time;
     }
-    static create(newPost, result) {
-        sql.query("INSERT INTO posts SET ?", newPost, (err, res) => {
+    static create(newCategory, result) {
+        sql.query("INSERT INTO categories SET ?", newCategory, (err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(err, null);
                 return;
             }
-            result(null, { id: res.insertId, ...newPost });
+            result(null, { id: res.insertId, ...newCategory });
         });
     }
-    static findById(postId, result) {
-        sql.query(`SELECT * FROM posts WHERE id = ${postId}`, (err, res) => {
+    static findById(categoryId, result) {
+        sql.query(`SELECT * FROM categories WHERE id = ${categoryId}`, (err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(err, null);
@@ -36,19 +36,18 @@ class Post {
                 return;
             }
 
-            // not found Post with the id
+            // not found Category with the id
             result({ kind: "not_found" }, null);
         });
     }
-
     static async getAll() {
-        const [rows] = await sql.execute("SELECT * FROM posts");
+        const [rows] = await sql.execute("SELECT * FROM categories");
         return rows;
     }
-    static updateById(id, post, result) {
+    static updateById(id, category, result) {
         sql.query(
-            "UPDATE posts SET email = ?, name = ?, active = ? WHERE id = ?",
-            [post.email, post.name, post.active, id],
+            "UPDATE categories SET email = ?, name = ?, active = ? WHERE id = ?",
+            [category.email, category.name, category.active, id],
             (err, res) => {
                 if (err) {
                     console.log("error: ", err);
@@ -57,17 +56,17 @@ class Post {
                 }
 
                 if (res.affectedRows == 0) {
-                    // not found Post with the id
+                    // not found Category with the id
                     result({ kind: "not_found" }, null);
                     return;
                 }
 
-                result(null, { id: id, ...post });
+                result(null, { id: id, ...category });
             }
         );
     }
     static remove(id, result) {
-        sql.query("DELETE FROM posts WHERE id = ?", id, (err, res) => {
+        sql.query("DELETE FROM categories WHERE id = ?", id, (err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);
@@ -75,7 +74,7 @@ class Post {
             }
 
             if (res.affectedRows == 0) {
-                // not found Post with the id
+                // not found Category with the id
                 result({ kind: "not_found" }, null);
                 return;
             }
@@ -84,7 +83,7 @@ class Post {
         });
     }
     static removeAll(result) {
-        sql.query("DELETE FROM posts", (err, res) => {
+        sql.query("DELETE FROM categories", (err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);
@@ -95,4 +94,4 @@ class Post {
     }
 }
 
-module.exports = Post;
+module.exports = Category;

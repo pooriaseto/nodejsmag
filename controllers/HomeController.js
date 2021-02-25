@@ -1,6 +1,7 @@
 const Post = require("../models/post");
+const Category = require("../models/category");
 
-class PostsController {
+class HomeController {
     async create(req, res) {
         // Validate request
         if (!req.body) {
@@ -27,17 +28,10 @@ class PostsController {
         });
     };
 
-    async findAll(req, res) {
-        Post.getAll((err, data) => {
-            if (err)
-                res.status(500).send({
-                    message:
-                        err.message || "Some error occurred while retrieving posts."
-                });
-            else {
-                res.status(200).render("index", { title: "index", posts: data});
-            };
-        });
+    async index(req, res) {
+        let posts = await Post.getAll();
+        let categories = await Category.getAll();
+        res.status(200).render("index", { title: "index", posts , categories })
     };
 
     async findOne(req, res) {
@@ -101,4 +95,4 @@ class PostsController {
 
 }
 
-module.exports = new PostsController;
+module.exports = new HomeController;
