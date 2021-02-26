@@ -31,6 +31,7 @@ class HomeController {
     async index(req, res) {
         let posts = await Post.getAll();
         let categories = await Category.getAll();
+        console.log(posts[0]);
         res.status(200).render("index", { title: "index", posts , categories })
     };
 

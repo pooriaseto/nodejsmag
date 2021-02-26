@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 const homeController = require("../controllers/HomeController");
+const BlogController = require("../controllers/BlogController");
 
 router.get("/", homeController.index);
 
-router.get('/single-post', function (req, res, next) {
-  res.render('singlePost', { title: 'aboutUs' });
-});
+router.get('/:mainCategory/:subCategory/:slug', BlogController.singlePost);
 
 
 router.get('/contact-us', function (req, res, next) {

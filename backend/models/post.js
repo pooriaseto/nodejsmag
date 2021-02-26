@@ -41,6 +41,11 @@ class Post {
         });
     }
 
+    static async findBySlug(slug) {
+        const [rows] = await sql.execute(`SELECT * FROM posts WHERE slug = ?` , [slug]);
+        return rows[0];
+    }
+
     static async getAll() {
         const [rows] = await sql.execute("SELECT * FROM posts");
         return rows;

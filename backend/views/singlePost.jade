@@ -17,11 +17,11 @@ block content
                 article.col-xl-8.col-lg-8
                     .card.article
                         h1.article__title
-                            | تصاویر واقعی وان پلاس 9 5G فاش شد
+                            !{post.title}
                         .article__header
                             span
-                                i.icons-calendar.pl-1
-                                | جمعه 14 آذر 1399
+                                i.icons-calendar.pr-2
+                                !{post.creation_time}
                             span
                                 i.icons-clock.pl-1
                                 | زمان تقریبی مطالعه 6 دقیقه
@@ -33,31 +33,8 @@ block content
                             span#shareBtn(title='اشتراک گذاری')
                                 i.icons-share-alt.article__icon
                         .article__text.text
-                            img.lazy(data-src='./assets/images/posts/thumb.jpg')
-                            p
-                                | تصاویر فاش‌شده از وان پلاس 9 5G، این گوشی را از تمامی زوایا در دنیای واقعی به ‌تصویر
-                                | می‌کشند تا با جدیدترین پرچم‌دار وان
-                                | پلاس از نزدیک آشنا شویم.
-                            h2
-                                | منبع اصلی خبر
-                            p
-                                | وان پلاس ۹ و وان پلاس ۹ پرو (OnePlus 9 Pro) در راه هستند و بر اساس شایعه‌های جدید، اندکی
-                                | زودتر از حد معمول در اواسط ماه
-                                | مارس ۲۰۲۱ (اواخر اسفند ۱۳۹۹) از راه خواهند رسید. تا پیش از انتشار گزارش‌های جدید،
-                                | اطلاعات درباره‌ی گوشی‌های سری وان پلاس
-                                | ۹ در همین حد بود؛ به‌علاوه در گزارشی مجزا اعلام شده بود این خانواده قرار است شامل عضو
-                                | سومی با نام وان پلاس 9E باشد.
-                                | همچنین به ‌لطف انتشار تعداد زیادی رندر از گوشی‌های جدید وان پلاس از سوی منبعی قابل
-                                | ‌اتکا، عملا می‌دانستیم دستگاه‌های
-                                | جدید شرکت چینی قرار است چه ظاهری داشته باشند.
-                            h2
-                                | اطراف سینی سیم‌کارت
-                            p
-                                | در همین راستا روز گذشته شاهد انتشار تصاویر و اطلاعات جدیدی از وان پلاس ۹ 5G بودیم. 
-                                | این‌طور که به ‌نظر می‌رسد، نمونه‌ی 
-                                | اولیه (پروتوتایپ) گوشی وان پلاس ۹ 5G به‌ دست برخی افراد رسیده؛ زیرا به‌تازگی تصاویری از 
-                                | نگاه نزدیک به وان پلاس ۹ 5G فاش 
-                                | شده است.
+                            img.lazy(data-src='/assets/images/posts/thumb.jpg')
+                            !{post.description}
                             .article__tags
                             a.article__tags-item(href='#')
                                 | طراحی
@@ -98,7 +75,7 @@ block content
                                 .comment
                                     .comment__header
                                         .comment__user
-                                            img.lazy.img-fluid.comment__img(data-src='./assets/images/avatar.jpg' width='64' height='64' alt='avatar')
+                                            img.lazy.img-fluid.comment__img(data-src='/assets/images/avatar.jpg' width='64' height='64' alt='avatar')
                                             span
                                                 | پوریا ستایش
                                         .comment__date
@@ -117,7 +94,7 @@ block content
                                 | مطالب مرتبط
                         .card-body
                             .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-01.jpg' alt='Generic placeholder image')
+                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-01.jpg' alt='Generic placeholder image')
                                 .media-body
                                     h5
                                         a.sidebar__title(href='#')
@@ -127,7 +104,7 @@ block content
                                         | در
                                         | 1399/10/15
                             .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-02.jpg' alt='Generic placeholder image')
+                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-02.jpg' alt='Generic placeholder image')
                                 .media-body
                                     h5
                                         a.sidebar__title(href='#')
@@ -137,7 +114,7 @@ block content
                                         | در
                                         | 1399/10/15
                             .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-03.jpg' alt='Generic placeholder image')
+                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-03.jpg' alt='Generic placeholder image')
                                 .media-body
                                     h5
                                         a.sidebar__title(href='#')
@@ -147,7 +124,7 @@ block content
                                         | در
                                         | 1399/10/15
                             .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='./assets/images/posts/post-tect-04.jpg' alt='Generic placeholder image')
+                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-04.jpg' alt='Generic placeholder image')
                                 .media-body
                                     h5
                                         a.sidebar__title(href='#')
