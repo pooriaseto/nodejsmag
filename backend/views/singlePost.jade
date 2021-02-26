@@ -9,9 +9,9 @@ block content
                             li.breadcrumb-item
                                 a(href='#') خانه
                             li.breadcrumb-item
-                                a(href='#') دسته اصلی
+                                a(href="/" + mainCat.slug) !{mainCat.title}
                             li.breadcrumb-item
-                                a(href='#') دسته فرعی
+                                a(href="/" + mainCat.slug + "/" + subCat.slug) !{subCat.title}
                             li.breadcrumb-item.active(aria-current='page')
                                 | تصاویر واقعی وان پلاس 9 5G فاش شد
                 article.col-xl-8.col-lg-8
@@ -93,43 +93,14 @@ block content
                             span.card-title
                                 | مطالب مرتبط
                         .card-body
-                            .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-01.jpg' alt='Generic placeholder image')
-                                .media-body
-                                    h5
-                                        a.sidebar__title(href='#')
-                                            | بررسی جامع گوشی Samsung Galaxy Note 20 Ultra
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
-                            .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-02.jpg' alt='Generic placeholder image')
-                                .media-body
-                                    h5
-                                        a.sidebar__title(href='#')
-                                            | خرید بهترین دوربین تا 10 میلیون
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
-                            .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-03.jpg' alt='Generic placeholder image')
-                                .media-body
-                                    h5
-                                        a.sidebar__title(href='#')
-                                            | آموزش مقایسه کالا
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
-                            .media
-                                img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-04.jpg' alt='Generic placeholder image')
-                                .media-body
-                                    h5
-                                        a.sidebar__title(href='#')
-                                            | بررسی جامع گوشی Samsung Galaxy
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
+                            each post in relatedPosts
+                                .media
+                                    img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-01.jpg' alt='Generic placeholder image')
+                                    .media-body
+                                        h5
+                                            a.sidebar__title(href='#')
+                                                !{post.title}
+                                        span.sidebar__desc
+                                            i.icons-calendar.pl-1
+                                            | در
+                                            !{post.creation_time}

@@ -42,8 +42,19 @@ class Post {
     }
 
     static async findBySlug(slug) {
-        const [rows] = await sql.execute(`SELECT * FROM posts WHERE slug = ?` , [slug]);
+        const [rows] = await sql.execute(`SELECT posts.id, posts.title, posts.description, posts.imageUrl, posts.creation_time, posts.modification_time, posts.like FROM posts WHERE slug = ?`, [slug]);
         return rows[0];
+    }
+
+    static async findCategories(id) {
+        const [rows] = await sql.execute(`SELECT c.title , c.slug, c.parentId from postsCategories as pc INNER JOIN categories as c on c.id = pc.categoryId WHERE pc.postId = ${id}`);
+        return rows;
+    }
+
+    static async findRelated()
+    {
+        const [rows] = await sql.execute("SELECT * FROM posts");
+        return rows;
     }
 
     static async getAll() {
