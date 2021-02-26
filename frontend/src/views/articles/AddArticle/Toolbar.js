@@ -11,10 +11,7 @@ import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  importButton: {
-    marginRight: theme.spacing(1)
-  },
-  exportButton: {
+  button: {
     marginRight: theme.spacing(1)
   }
 }));
@@ -31,11 +28,19 @@ const Toolbar = ({ className, ...rest }) => {
         display="flex"
         justifyContent="flex-end"
       >
-        <Link to="/app/add-article">
+        <a href="https://www.google.com" target="_blank">
+          <Button
+            className={classes.button}
+            color="secondary"
+            variant="contained">
+            Show on blog
+          </Button>
+        </a>
+        <Link to="/app/articles">
           <Button
             color="primary"
             variant="contained">
-            Add Article
+            Back to list
           </Button>
         </Link>
       </Box>

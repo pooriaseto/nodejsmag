@@ -10,7 +10,7 @@ import NotFoundView from './views/errors/NotFoundView';
 import ArticleListView from './views/articles/ArticleListView';
 import RegisterView from './views/auth/RegisterView';
 import SettingsView from './views/settings/SettingsView';
-
+import AddArticle from './views/articles/AddArticle'
 const routes = [
   {
     path: 'app',
@@ -19,7 +19,8 @@ const routes = [
       { path: 'account', element: <AccountView /> },
       { path: 'users', element: <AdminsListView /> },
       { path: 'dashboard', element: <DashboardView /> },
-      { path: 'articles', element: <ArticleListView /> },
+      { path: 'articles', element: <ArticleListView />, },
+      { path: 'add-article', element: <AddArticle />, },
       { path: 'settings', element: <SettingsView /> },
       { path: 'register', element: <RegisterView /> },
       { path: '*', element: <Navigate to="/404" /> }
