@@ -42,31 +42,17 @@ header(class="header")
                 div(class="menu-content")
                     nav
                         ul(class="main-menu")
-                            li
-                                a(class="menu-link", href="#")
-                                    span(class="menu-link-text")
-                                        | کفش
-                                    i(class="icons-angle-down")
-                                ul(class="dropdown-menu-item")
-                                    li
-                                        a(class="submenu-link", href="#")
-                                            | کفش کوهنوردی
-                                    li
-                                        a(class="submenu-link", href="#")
-                                            | کفش پیاده روی مردانه
-                                    li
-                                        a(class="submenu-link", href="#")
-                                            | کفش پیاده روی زنانه
-                                    li
-                                        a(class="submenu-link", href="#")
-                                            | کفش مجلسی مردانه
-                                    li
-                                        a(class="submenu-link", href="#")
-                                            | کفش ورزشی مردانه 
-                                    li
-                                        a(class="submenu-link", href="#")
-                                            | صندل مردانه
-                
+                            each maincat in categories.filter(a=>a.parentId === 0)
+                                li
+                                    a(class="menu-link", href="/" + maincat.slug)
+                                        span(class="menu-link-text")
+                                            !{maincat.title}
+                                        i(class="icons-angle-down")
+                                    ul(class="dropdown-menu-item")
+                                        each subcat in categories.filter(a=> ( a.parentid === maincat.id && a.parentId !== 0))
+                                            li
+                                                a(class="submenu-link", href="/" + maincat.slug + '/' + subcat.slug)
+                                                    !{subcat.title}
             
         div(class="side-nav-container")
             div(class="humburger-menu-lines side-menu-close")
