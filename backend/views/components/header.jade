@@ -49,7 +49,7 @@ header(class="header")
                                             !{maincat.title}
                                         i(class="icons-angle-down")
                                     ul(class="dropdown-menu-item")
-                                        each subcat in categories.filter(a=> ( a.parentid === maincat.id && a.parentId !== 0))
+                                        each subcat in categories.filter(a=>a.parentId === maincat.id)
                                             li
                                                 a(class="submenu-link", href="/" + maincat.slug + '/' + subcat.slug)
                                                     !{subcat.title}

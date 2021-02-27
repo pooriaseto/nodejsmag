@@ -1,19 +1,18 @@
 module.exports = (sequelize, type) => {
   return sequelize.define(
-    "categories",
+    "postscategories",
     {
-      id: {
+      postId: {
         type: type.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
       },
-      title: type.STRING,
-      slug: type.STRING,
-      imageUrl: type.STRING,
-      parentId: type.INTEGER,
+      categoryId: {
+        type: type.INTEGER,
+        primaryKey: true,
+      },
     },
     {
       timestamps: false,
     }
   );
-}
+};

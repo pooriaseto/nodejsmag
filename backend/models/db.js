@@ -1,8 +1,8 @@
-
 const dbConfig = require('../config/db');
 const Sequelize = require('sequelize');
 const PostModel = require('./post')
 const CategoryModel = require('./category')
+const PostsCategoriesModel = require("./postscategories");
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
@@ -17,9 +17,18 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 const Post = PostModel(sequelize, Sequelize)
 const Category = CategoryModel(sequelize, Sequelize)
+const PostsCategories = PostsCategoriesModel(sequelize, Sequelize);
 
-Post.belongsToMany(Category, { through: 'postsCategories' });
-Category.belongsToMany(Post, { through: 'postsCategories' });
+
+Post.belongsToMany(Category, {
+  as: "categories",
+  through: PostsCategories,
+});
+
+Category.belongsToMany(Post, {
+  as: "posts",
+  through: PostsCategories,
+});
 
 module.exports = {
     Post,
