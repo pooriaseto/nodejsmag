@@ -1,13 +1,27 @@
 
 const dbConfig = require('../config/db');
-const mysql = require('mysql2/promise');
+const Sequelize = require('sequelize');
+const PostModel = require('./post')
+const CategoryModel = require('./category')
 
-
-const pool = mysql.createPool({
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
-    user: dbConfig.USER,
-    password: dbConfig.PASSWORD,
-    database: dbConfig.DB
-});
+    dialect: dbConfig.DIALECT,
+    pool: {
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+})
 
-module.exports = pool;
+const Post = PostModel(sequelize, Sequelize)
+const Category = CategoryModel(sequelize, Sequelize)
+
+Post.belongsToMany(Category, { through: 'postsCategories' });
+Category.belongsToMany(Post, { through: 'postsCategories' });
+
+module.exports = {
+    Post,
+    Category
+}
