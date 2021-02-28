@@ -10,6 +10,7 @@ module.exports = (sequelize, type) => {
         title: type.STRING,
         slug: type.STRING,
         imageUrl: type.STRING,
+        description : type.STRING,
         creation_time: type.DATE,
         modification_time: type.DATE,
         visit: type.INTEGER,
