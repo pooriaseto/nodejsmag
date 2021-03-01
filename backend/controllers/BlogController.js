@@ -3,13 +3,19 @@ const { Post, Category } = require("../models/db");
 const DateTime = require("../utils/dateTime");
 
 class BlogController {
-  async singlePost(req, res) {
+  async singlePost(req, res, next) {
     const slug = req.params.slug;
 
     let post = await Post.findOne({
       where: { slug: slug },
       include: [{ model: Category, as: "categories" }],
     });
+
+    if (!post) {
+      res.statusCode = 404;
+      next();
+    }
+
     post.creation_time_fa = DateTime.convertToPersianDateTime(
       post.creation_time
     );
@@ -38,6 +44,10 @@ class BlogController {
       where: { slug: slug },
       include: [{ model: Post, as: "posts" }],
     });
+    if (!category) {
+      res.statusCode = 404;
+      next();
+    }
     res.render("category", { category });
   }
 
@@ -47,6 +57,10 @@ class BlogController {
       where: { slug: slug },
       include: [{ model: Post, as: "posts" }],
     });
+    if (!category) {
+      res.statusCode = 404;
+      next();
+    }
     res.render("category", { category });
   }
 }

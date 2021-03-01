@@ -14,13 +14,13 @@ router.get("/about-us", function (req, res, next) {
   res.render("aboutUs", { title: "aboutUs" });
 });
 
-router.get("/:mainCategorySlug", BlogController.mainCategory);
-router.get("/:mainCategorySlug/:subCategorySlug", BlogController.subCategory);
-
 router.get("/:mainCategory/:subCategory/:slug", BlogController.singlePost);
+router.get("/:mainCategorySlug/:subCategorySlug", BlogController.subCategory);
+router.get("/:mainCategorySlug", BlogController.mainCategory);
+
 
 router.all("*", (req, res, next) => {
-  res.render("notFound", { title: "notfound" });
+  res.render("notFound", { title: "متاسفانه صفحه مورد نظر یافت نشد." });
 });
 
 module.exports = router;
