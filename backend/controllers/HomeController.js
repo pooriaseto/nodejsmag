@@ -4,6 +4,9 @@ class HomeController {
   async index(req, res) {
     let posts = await Post.findAll({
       include: { model: Category, as: "categories" },
+      order: [["creation_time", "DESC"]],
+      limit: 1,
+      offset: 0,
     });
 
     
