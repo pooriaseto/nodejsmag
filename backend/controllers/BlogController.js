@@ -31,6 +31,24 @@ class BlogController {
       relatedPosts,
     });
   }
+
+  async mainCategory(req, res, next) {
+    const slug = req.params.mainCategorySlug;
+    let category = await Category.findOne({
+      where: { slug: slug },
+      include: [{ model: Post, as: "posts" }],
+    });
+    res.render("category", { category });
+  }
+
+  async subCategory(req, res, next) {
+    const slug = req.params.subCategorySlug;
+    let category = await Category.findOne({
+      where: { slug: slug },
+      include: [{ model: Post, as: "posts" }],
+    });
+    res.render("category", { category });
+  }
 }
 
 module.exports = new BlogController();

@@ -1,0 +1,76 @@
+extends layout
+block content
+  section.section
+        .container
+            .row
+                section.col-12
+                    nav(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') خانه
+                            li.breadcrumb-item.active(aria-current='page')
+                                !{category.title}
+                .col-12 
+                    h1.py-2
+                        !{category.title}
+
+   section.section
+        .container
+            .row
+                main.col-12
+                    each post in category.posts
+                        article.box
+                            a(href="/maincat/subcat/" + post.slug, class="box__img")
+                                img(data-src="/assets/images/"+ post.imageUrl, class="lazy", alt="image")
+                            .box__body
+                                header
+                                    ul.box__categories
+                                        li
+                                            a(class="box__categories-item", href="#")
+                                                | دسته اصلی
+                                            a(class="box__categories-item", href="#")
+                                                | دسته فرعی
+                    
+                                    h3.box__title
+                                        a(href="/maincat/subcat/" + post.slug)
+                                            | !{post.title}
+        
+    
+                                .box__desc
+                                    span.ml-3
+                                        i.icons-calendar.pl-2
+                                        | در تاریخ 
+                                        | 1399/10/15 
+    
+                                    span
+                                        i.icons-clock.pl-2
+                                        | زمان تقریبی مطالعه 5 دقیقه
+                
+
+
+
+                    .card.card--gray
+                        .card-header.text-center
+                            span.card-title
+                                | مطالب بیشتری را ببینید
+                       
+                        .card-body
+                            nav(class="d-flex justify-content-center", aria-label="Page navigation")
+                                ul.pagination
+                                    li.page-item
+                                        a(class="page-link", href="#", aria-label="Previous")
+                                            span(aria-hidden="true")
+                                                | &laquo;
+                                    li.page-item.active
+                                        a(class="page-link",href="#")
+                                            | 1
+                                    li.page-item
+                                        a(class="page-link", href="#")
+                                            | 2
+                                    li.page-item
+                                        a(class="page-link", href="#")
+                                            | 3
+                                    li.page-item
+                                        a(class="page-link", href="#", aria-label="Next")
+                                            span(aria-hidden="true")
+                                                | &raquo;

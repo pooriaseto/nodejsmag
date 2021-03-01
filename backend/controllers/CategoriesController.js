@@ -1,7 +1,7 @@
-const Category = require("../models/category");
+const { Category } = require("../models/db");
 
 class CategoriesController {
 
 }
 
-module.exports = new CategoriesController;
+module.exports = new CategoriesController();
