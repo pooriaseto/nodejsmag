@@ -105,20 +105,23 @@ block content
                 main.col-xl-8.col-lg-8
 
                     each post in posts
+                        - var mainCat = post.categories.filter((a) => a.parentId === 0)[0];
+                        - var subCat = post.categories.filter((a) => a.parentId !== 0)[0];
                         article.box
-                            a(href="/maincat/subcat/" + post.slug, class="box__img")
+                            a(href="/"+ mainCat.slug +"/" + subCat.slug +"/" + post.slug, class="box__img")
                                 img(data-src="./assets/images/"+ post.imageUrl, class="lazy", alt="image")
                             .box__body
                                 header
                                     ul.box__categories
                                         li
-                                            a(class="box__categories-item", href="#")
-                                                | دسته اصلی
-                                            a(class="box__categories-item", href="#")
-                                                | دسته فرعی
+                                            a(class="box__categories-item", href="/" + mainCat.slug)
+                                                !{mainCat.title}
+                                        
+                                            a(class="box__categories-item",  href="/" + mainCat.slug + "/" + subCat.slug)
+                                                !{subCat.title}
                     
                                     h3.box__title
-                                        a(href="/maincat/subcat/" + post.slug)
+                                        a(href="/"+ mainCat.slug +"/" + subCat.slug +"/" + post.slug)
                                             | !{post.title}
         
     
