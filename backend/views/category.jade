@@ -19,6 +19,8 @@ block content
             .row
                 main.col-12
                     each post in category.posts
+                        - var mainCat = post.categories.filter((a) => a.parentId === 0)[0];
+                        - var subCat = post.categories.filter((a) => a.parentId !== 0)[0];
                         article.box
                             a(href="/maincat/subcat/" + post.slug, class="box__img")
                                 img(data-src="/assets/images/"+ post.imageUrl, class="lazy", alt="image")
@@ -26,21 +28,22 @@ block content
                                 header
                                     ul.box__categories
                                         li
-                                            a(class="box__categories-item", href="#")
-                                                | دسته اصلی
-                                            a(class="box__categories-item", href="#")
-                                                | دسته فرعی
+                                            a(class="box__categories-item", href="/" + mainCat.slug)
+                                                !{mainCat.title}
+                                        li
+                                            a(class="box__categories-item",  href="/" + mainCat.slug + "/" + subCat.slug)
+                                                !{subCat.title}
                     
                                     h3.box__title
                                         a(href="/maincat/subcat/" + post.slug)
-                                            | !{post.title}
+                                            !{post.title}
         
     
                                 .box__desc
                                     span.ml-3
                                         i.icons-calendar.pl-2
-                                        | در تاریخ 
-                                        | 1399/10/15 
+                                        | در تاریخ  
+                                        |!{convertToPersianDate(post.creation_time)}
     
                                     span
                                         i.icons-clock.pl-2

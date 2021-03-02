@@ -1,11 +1,18 @@
-const { Category } = require('../models/db')
-const cache = require("memory-cache");
+const { Category, Post } = require("../models/db");
+
 class AppController {
-  async Public(req, res,next) {
+  async Public(req, res, next) {
     res.locals.app = { host: req.protocol + "://" + req.get("host") };
     res.locals.categories = await Category.findAll({
-      attributes: ["title", "slug" , "parentId" , "id"],
+      attributes: ["title", "slug", "parentId", "id"],
+      include: {
+        model: Post,
+        as : "posts",
+        required: true,
+        attributes : []
+      },
     });
+
     next();
   }
 }

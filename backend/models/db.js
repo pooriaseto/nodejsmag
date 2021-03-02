@@ -27,6 +27,8 @@ Post.belongsToMany(Category, {
   through: PostsCategories,
 });
 
+Post.hasMany(Comment);
+
 Category.belongsToMany(Post, {
   as: "posts",
   through: PostsCategories,

@@ -418,6 +418,7 @@
     }
 
     &__desc {
+        @extend .d-flex;
         color: $gray-600;
         font-size: 0.8rem;
         margin-top: 1rem;

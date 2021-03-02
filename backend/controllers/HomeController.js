@@ -1,18 +1,33 @@
 const { Post, Category } = require("../models/db");
+const DateTime = require("../utils/dateTime");
 
 class HomeController {
   async index(req, res) {
     let query = await Post.findAndCountAll({
-      include: { model: Category, as: "categories", required: true },
+      include: {
+        model: Category,
+        as: "categories",
+        attributes: ["title", "slug", "parentId", "id"],
+        required: true,
+      },
+      attributes: ["title", "slug", "imageUrl", "creation_time"],
       order: [["creation_time", "DESC"]],
       limit: 1,
       offset: 0,
     });
 
+    let subjects = await Category.findAll({
+      attributes: ["title", "slug", "imageUrl"],
+      limit: 6,
+      offset: 0,
+    });
 
-    let subjects = await Category.findAll();
-
-    res.status(200).render("index", { title: "index", posts: query.rows, subjects });
+    res.status(200).render("index", {
+      title: "index",
+      posts: query.rows,
+      subjects,
+      convertToPersianDate: DateTime.convertToPersianDate,
+    });
   }
 }
 

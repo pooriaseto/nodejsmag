@@ -21,7 +21,7 @@ block content
                         .article__header
                             span
                                 i.icons-calendar.pr-2
-                                !{post.creation_time_fa}
+                                !{convertToPersianDateTime(post.creation_time)}
                             span
                                 i.icons-clock.pl-1
                                 | زمان تقریبی مطالعه 6 دقیقه
@@ -70,22 +70,23 @@ block content
                                     textarea#text.form-control.form-control--custom(rows='5' type='text' name='text')
                                 .form-group
                                     input.btn.btn-primary(type='submit' value='ارسال')
-                        .card.card--gray
-                            .card-body
-                                .comment
-                                    .comment__header
-                                        .comment__user
-                                            img.lazy.img-fluid.comment__img(data-src='/assets/images/avatar.jpg' width='64' height='64' alt='avatar')
-                                            span
-                                                | پوریا ستایش
-                                        .comment__date
-                                            | 5 روز پیش
-                                    .comment__desc
-                                        | در همین راستا روز گذشته شاهد انتشار تصاویر و اطلاعات جدیدی از وان پلاس ۹ 5G
-                                        | بودیم. این‌طور که به ‌نظر می‌رسد، نمونه‌ی
-                                    .comment__reply
-                                        a.btn.btn-sm.btn-outline-primary(href='#')
-                                            | پاسخ
+                        if(post.comments.length > 0)
+                            .card.card--gray
+                                .card-body
+                                    each comment in post.comments
+                                        .comment
+                                            .comment__header
+                                                .comment__user
+                                                    img.lazy.img-fluid.comment__img(data-src='/assets/images/avatar.jpg' width='64' height='64' alt='avatar')
+                                                    span
+                                                        !{comment.name}
+                                                .comment__date
+                                                    !{convertToPersianDate(comment.creation_time)}
+                                            .comment__desc
+                                                !{comment.description}
+                                            .comment__reply
+                                                a.btn.btn-sm.btn-outline-primary(href='#')
+                                                    | پاسخ
 
                 aside.col-xl-4.col-lg-4.sticky
                     .card.sidebar
@@ -103,4 +104,4 @@ block content
                                         span.sidebar__desc
                                             i.icons-calendar.pl-1
                                             | در
-                                            !{post.creation_time_fa}
+                                            !{convertToPersianDate(post.creation_time)}

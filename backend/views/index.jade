@@ -116,7 +116,7 @@ block content
                                         li
                                             a(class="box__categories-item", href="/" + mainCat.slug)
                                                 !{mainCat.title}
-                                        
+                                        li
                                             a(class="box__categories-item",  href="/" + mainCat.slug + "/" + subCat.slug)
                                                 !{subCat.title}
                     
@@ -128,8 +128,8 @@ block content
                                 .box__desc
                                     span.ml-3
                                         i.icons-calendar.pl-2
-                                        | در تاریخ 
-                                        | 1399/10/15 
+                                        | در تاریخ  
+                                        |!{convertToPersianDate(post.creation_time)}
     
                                     span
                                         i.icons-clock.pl-2

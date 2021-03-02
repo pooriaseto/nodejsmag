@@ -10,6 +10,8 @@ module.exports = (sequelize, type) => {
       name: type.STRING,
       email: type.STRING,
       description: type.STRING,
+      creation_time: type.DATE,
+      postId: type.INTEGER,
     },
     {
       timestamps: false,
