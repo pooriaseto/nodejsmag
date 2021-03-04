@@ -34,8 +34,16 @@ Category.belongsToMany(Post, {
   through: PostsCategories,
 });
 
+
+Post.hasMany(PostsCategories);
+PostsCategories.belongsTo(Post);
+
+Category.hasMany(PostsCategories);
+PostsCategories.belongsTo(Category);
+
 module.exports = {
   Post,
   Category,
   Comment,
+  PostsCategories
 };

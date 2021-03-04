@@ -8,17 +8,22 @@ block content
                         ol.breadcrumb
                             li.breadcrumb-item
                                 a(href='#') خانه
-                            li.breadcrumb-item.active(aria-current='page')
-                                !{category.title}
+                            if(subcategory)
+                                li.breadcrumb-item.active(aria-current='page')
+                                    a(href=app.host + "/" + maincategory.slug) !{maincategory.title}
+                                li.breadcrumb-item.active(aria-current='page')
+                                    !{subcategory.title}
+                            else
+                                li.breadcrumb-item.active(aria-current='page')
+                                    !{maincategory.title}
                 .col-12 
                     h1.py-2
-                        !{category.title}
-
+                        !{title}
    section.section
         .container
             .row
                 main.col-12
-                    each post in category.posts
+                    each post in posts
                         - var mainCat = post.categories.filter((a) => a.parentId === 0)[0];
                         - var subCat = post.categories.filter((a) => a.parentId !== 0)[0];
                         article.box
@@ -49,8 +54,6 @@ block content
                                         i.icons-clock.pl-2
                                         | زمان تقریبی مطالعه 5 دقیقه
                 
-
-
 
                     .card.card--gray
                         .card-header.text-center

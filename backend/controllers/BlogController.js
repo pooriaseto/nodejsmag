@@ -1,4 +1,4 @@
-const { Post, Category, Comment } = require("../models/db");
+const { Post, Category, Comment, PostsCategories } = require("../models/db");
 
 const DateTime = require("../utils/dateTime");
 
@@ -58,62 +58,98 @@ class BlogController {
 
   async mainCategory(req, res, next) {
     const slug = req.params.mainCategorySlug;
-    let category = await Category.findOne({
+
+    let maincategory = await Category.findOne({
       where: { slug: slug },
-      include: [
-        {
-          model: Post,
-          as: "posts",
-          attributes: ["id", "title", "slug", "imageUrl", "creation_time"],
-          required: true,
-          include: {
-            model: Category,
-            as: "categories",
-            attributes: ["title", "slug", "parentId"],
-          },
-        },
-      ],
-      attributes: ["title", "slug", "imageUrl"],
+      attributes: ["id", "title", "slug", "imageUrl"],
     });
-    if (!category) {
+
+    if (!maincategory) {
       res.statusCode = 404;
       next();
     }
+
+    let posts = await Post.findAll({
+      offset: 0,
+      limit: 1,
+      attributes: ["title", "slug", "imageUrl", "creation_time"],
+      order: [["creation_time", "DESC"]],
+      include: [
+        {
+          model: PostsCategories,
+          where: { categoryId: maincategory.id },
+        },
+        {
+          model: Category,
+          as: "categories",
+          attributes: ["title", "slug", "parentId"],
+        },
+      ],
+    });
+
     res.render("category", {
-      category,
-      title: category.title,
+      maincategory,
+      title: maincategory.title,
+      posts,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
 
   async subCategory(req, res, next) {
-    const slug = req.params.subCategorySlug;
-    let category = await Category.findOne({
-      where: { slug: slug },
-      include: [
-        {
-          model: Post,
-          as: "posts",
-          attributes: ["id", "title", "slug", "imageUrl", "creation_time"],
-          required: true,
-          order: [["creation_time", "DESC"]],
-          include: {
-            model: Category,
-            as: "categories",
-            attributes: ["title", "slug", "parentId"],
-          },
-        },
-      ],
-      attributes: ["id", "title", "slug", "imageUrl"],
+    const mainCategorySlug = req.params.mainCategorySlug;
+    const subCategorySlug = req.params.subCategorySlug;
+
+    let maincategory = await Category.findOne({
+      where: { slug: mainCategorySlug },
+      attributes: ["title", "slug"],
     });
 
-    if (!category) {
+    if (!maincategory) {
       res.statusCode = 404;
       next();
     }
+
+    let subcategory = await Category.findOne({
+      where: { slug: subCategorySlug },
+      attributes: ["id", "title", "slug", "imageUrl"],
+    });
+
+    //redirect user to 404 page when subcategory is not exist or
+    //subcategory is not child of maincategory
+    if (!subcategory || subcategory.parentId !== maincategory.id) {
+      res.statusCode = 404;
+      next();
+    }
+
+    let posts = await Post.findAll({
+      offset: 0,
+      limit: 1,
+      attributes: ["title", "slug", "imageUrl", "creation_time"],
+      order: [["creation_time", "DESC"]],
+      include: [
+        {
+          model: PostsCategories,
+          where: { categoryId: subcategory.id },
+        },
+        {
+          model: Category,
+          as: "categories",
+          attributes: ["title", "slug", "parentId"],
+        },
+      ],
+    });
+
+    //redirect user to 404 page when subcategory doesn't have post.
+    if (!posts || posts.length === 0) {
+      res.statusCode = 404;
+      next();
+    }
+
     res.render("category", {
-      category,
-      title: category.title,
+      maincategory,
+      subcategory,
+      title: subcategory.title,
+      posts,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
