@@ -70,9 +70,10 @@ class BlogController {
       next();
     }
 
-    let posts = await Post.findAll({
+    let getPosts = await Post.findAndCountAll({
       offset: 0,
       limit: PostsPageSize,
+      distinct: true,
       attributes: ["title", "slug", "imageUrl", "creation_time"],
       order: [["creation_time", "DESC"]],
       include: [
@@ -88,10 +89,23 @@ class BlogController {
       ],
     });
 
+    //show 404 page when maincategory doesn't have post.
+    if (!getPosts.rows || getPosts.rows.length === 0) {
+      res.statusCode = 404;
+      next();
+    }
+
+    let pagination = {
+      pagesCount: getPosts.count / PostsPageSize,
+      activePage: 1,
+      mainPath: mainPath + "/" + slug,
+    };
+
     res.render("category", {
       maincategory,
       title: maincategory.title,
-      posts,
+      posts : getPosts.rows,
+      pagination,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
@@ -122,9 +136,10 @@ class BlogController {
       next();
     }
 
-    let posts = await Post.findAll({
+    let getPosts = await Post.findAndCountAll({
       offset: 0,
       limit: PostsPageSize,
+      distinct: true,
       attributes: ["title", "slug", "imageUrl", "creation_time"],
       order: [["creation_time", "DESC"]],
       include: [
@@ -140,17 +155,24 @@ class BlogController {
       ],
     });
 
-    //redirect user to 404 page when subcategory doesn't have post.
-    if (!posts || posts.length === 0) {
+    //show 404 page when subcategory doesn't have post.
+    if (!getPosts.rows || getPosts.rows.length === 0) {
       res.statusCode = 404;
       next();
     }
+
+    let pagination = {
+      pagesCount: getPosts.count / PostsPageSize,
+      activePage: 1,
+      mainPath: mainPath + "/" + maincategory.slug + "/" + subcategory.slug,
+    };
 
     res.render("category", {
       maincategory,
       subcategory,
       title: subcategory.title,
-      posts,
+      posts: getPosts.rows,
+      pagination,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
@@ -165,6 +187,8 @@ class BlogController {
       next();
     }
 
+    //prevent from duplicate content
+    //we don't have route with pagenumber = 1
     if (pageNumber === 1) {
       let path = mainPath + "/" + slug;
       res.redirect(301, path);
@@ -180,9 +204,10 @@ class BlogController {
       next();
     }
 
-    let posts = await Post.findAll({
-      offset: PostsPageSize * pageNumber - 1,
+    let getPosts = await Post.findAndCountAll({
+      offset: PostsPageSize * (pageNumber - 1),
       limit: PostsPageSize,
+      distinct: true,
       attributes: ["title", "slug", "imageUrl", "creation_time"],
       order: [["creation_time", "DESC"]],
       include: [
@@ -198,10 +223,23 @@ class BlogController {
       ],
     });
 
+    //show 404 page when maincategory doesn't have post.
+    if (!getPosts.rows || getPosts.rows.length === 0) {
+      res.statusCode = 404;
+      next();
+    }
+
+    let pagination = {
+      pagesCount: getPosts.count / PostsPageSize,
+      activePage: pageNumber,
+      mainPath: mainPath + "/" + slug,
+    };
+
     res.render("category", {
       maincategory,
       title: maincategory.title,
-      posts,
+      posts: getPosts.rows,
+      pagination,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
@@ -239,14 +277,17 @@ class BlogController {
       next();
     }
 
+    //prevent from duplicate content
+    //we don't have route with pagenumber = 1
     if (pageNumber === 1) {
       let path = mainPath + "/" + mainCategorySlug + "/" + subCategorySlug;
       res.redirect(301, path);
     }
 
-    let posts = await Post.findAll({
-      offset: PostsPageSize * pageNumber - 1,
+    let getPosts = await Post.findAndCountAll({
+      offset: PostsPageSize * (pageNumber - 1),
       limit: PostsPageSize,
+      distinct: true,
       attributes: ["title", "slug", "imageUrl", "creation_time"],
       order: [["creation_time", "DESC"]],
       include: [
@@ -262,17 +303,24 @@ class BlogController {
       ],
     });
 
-    //redirect user to 404 page when subcategory doesn't have post.
-    if (!posts || posts.length === 0) {
+    //show 404 page when subcategory doesn't have post.
+    if (!getPosts.rows || getPosts.rows.length === 0) {
       res.statusCode = 404;
       next();
     }
+
+    let pagination = {
+      pagesCount: getPosts.count / PostsPageSize,
+      activePage: pageNumber,
+      mainPath: mainPath + "/" + maincategory.slug + "/" + subcategory.slug,
+    };
 
     res.render("category", {
       maincategory,
       subcategory,
       title: subcategory.title,
-      posts,
+      posts: getPosts.rows,
+      pagination,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }

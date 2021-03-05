@@ -1,0 +1,40 @@
+mixin pagination(pagination)
+  .card.card--gray
+    .card-header.text-center
+        span.card-title
+            | مطالب بیشتری را ببینید
+            !{title}
+    .card-body
+        nav(class="d-flex justify-content-center", aria-label="Page navigation")
+            ul.pagination
+              if(pagination.activePage !== 1)
+                li.page-item
+                  if(pagination.activePage !== 2)
+                    a(class="page-link", href=pagination.mainPath + "/" + "page/" + (pagination.activePage-1), aria-label="Previous")
+                        span(aria-hidden="true")
+                            | &laquo;
+                  else 
+                    a(class="page-link", href=pagination.mainPath, aria-label="Previous")
+                        span(aria-hidden="true")
+                            | &laquo;
+              - var pageNumber = 0
+              while pageNumber < pagination.pagesCount
+                - pageNumber += 1
+                if(pageNumber !== pagination.activePage)
+                  if(pageNumber !== 1)
+                    li.page-item
+                        a(class="page-link",href=pagination.mainPath + "/" + "page/" + pageNumber) 
+                          !{pageNumber}
+                  else 
+                    li.page-item
+                      a(class="page-link",href=pagination.mainPath) 
+                        !{pageNumber}
+                else
+                  li.page-item.active
+                    span(class="page-link",href="#") 
+                      !{pageNumber}
+              if(pagination.pagesCount !== pagination.activePage)
+                li.page-item
+                    a(class="page-link", href=pagination.mainPath + "/" + "page/" + (pagination.activePage+1), aria-label="Previous")
+                        span(aria-hidden="true")
+                            | &raquo;

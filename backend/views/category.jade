@@ -54,29 +54,6 @@ block content
                                         i.icons-clock.pl-2
                                         | زمان تقریبی مطالعه 5 دقیقه
                 
-
-                    .card.card--gray
-                        .card-header.text-center
-                            span.card-title
-                                | مطالب بیشتری را ببینید
-                       
-                        .card-body
-                            nav(class="d-flex justify-content-center", aria-label="Page navigation")
-                                ul.pagination
-                                    li.page-item
-                                        a(class="page-link", href="#", aria-label="Previous")
-                                            span(aria-hidden="true")
-                                                | &laquo;
-                                    li.page-item.active
-                                        a(class="page-link",href="#")
-                                            | 1
-                                    li.page-item
-                                        a(class="page-link", href="#")
-                                            | 2
-                                    li.page-item
-                                        a(class="page-link", href="#")
-                                            | 3
-                                    li.page-item
-                                        a(class="page-link", href="#", aria-label="Next")
-                                            span(aria-hidden="true")
-                                                | &raquo;
+                    if(pagination)
+                        include components/pagination
+                        +pagination(pagination)
