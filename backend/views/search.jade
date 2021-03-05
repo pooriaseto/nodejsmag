@@ -1,0 +1,36 @@
+extends layout
+block content
+    section.section
+        .container
+            .row
+                main.col-12
+
+                    each post in posts
+                        - var mainCat = post.categories.filter((a) => a.parentId === 0)[0];
+                        - var subCat = post.categories.filter((a) => a.parentId !== 0)[0];
+                        article.box
+                            a(href="/"+ mainCat.slug +"/" + subCat.slug +"/" + post.slug, class="box__img")
+                                img(data-src="/assets/images/"+ post.imageUrl, class="lazy", alt="image")
+                            .box__body
+                                header
+                                    ul.box__categories
+                                        li
+                                            a(class="box__categories-item", href="/" + mainCat.slug)
+                                                !{mainCat.title}
+                                        li
+                                            a(class="box__categories-item",  href="/" + mainCat.slug + "/" + subCat.slug)
+                                                !{subCat.title}
+                    
+                                    h3.box__title
+                                        a(href="/"+ mainCat.slug +"/" + subCat.slug +"/" + post.slug)
+                                            | !{post.title}
+        
+    
+                                .box__desc
+                                    span.ml-3
+                                        i.icons-calendar.pl-2
+                                        | در تاریخ  
+                                        !{convertToPersianDate(post.creation_time)}
+            
+                    include components/pagination
+                    +pagination(pagination)

@@ -18,11 +18,11 @@ header(class="header")
     
     div(class="header__middle")
         div(class="container header__middle-items p-0")
-            form(class="mw-100")
+            form(action="/search/",class="mw-100")
                 div(class="search form-group")
                     button(type="submit", class="search__btn")
                         i(class="icons-search")
-                    input(type="text", class="form-control", placeholder="جستجو در به مگ")
+                    input(type="text", name="q" , class="form-control", placeholder="جستجو در به مگ")
                 
             a(href=app.host)
                 img(data-src="/assets/images/logo.svg", height="30", width="155", class="lazy", alt="beh mag logo")
