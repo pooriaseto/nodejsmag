@@ -19,6 +19,7 @@ class HomeController {
     });
 
     let subjects = await Category.findAll({
+      where : {parentId : 0},
       attributes: ["title", "slug", "imageUrl"],
       limit: 6,
       offset: 0,
@@ -51,12 +52,16 @@ class HomeController {
       ],
     });
 
+
+    let chosenPosts = true;
+
     res.status(200).render("index", {
       title: "index",
       posts: query.rows,
       subjects,
       pagination,
       popularPosts,
+      chosenPosts,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
@@ -104,9 +109,17 @@ class HomeController {
 
     let popularPosts = await Post.findAll({
       order: [["like", "DESC"]],
-      attributes: ["imageUrl", "title", "slug", "creation_time"],
+      attributes: ["imageUrl", "title", "slug", "creation_time", "like"],
       limit: 5,
       offset: 0,
+      include: [
+        {
+          model: Category,
+          as: "categories",
+          attributes: ["title", "slug", "parentId"],
+          required: true,
+        },
+      ],
     });
 
     res.status(200).render("index", {
