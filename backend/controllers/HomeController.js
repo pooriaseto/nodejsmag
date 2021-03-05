@@ -1,4 +1,5 @@
 const { Post, Category } = require("../models/db");
+const { PostsPageSize } = require("../config/public");
 const DateTime = require("../utils/dateTime");
 
 class HomeController {
@@ -12,7 +13,7 @@ class HomeController {
       },
       attributes: ["title", "slug", "imageUrl", "creation_time"],
       order: [["creation_time", "DESC"]],
-      limit: 1,
+      limit: PostsPageSize,
       offset: 0,
     });
 

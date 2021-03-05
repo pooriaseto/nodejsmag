@@ -1,9 +1,9 @@
+const { mainPath } = require("../config/public");
 const { Category, Post } = require("../models/db");
-const { getMainPath } = require("../utils/path");
 
 class AppController {
   async Public(req, res, next) {
-    res.locals.app = { host: getMainPath(req) };
+    res.locals.app = { host: mainPath };
     res.locals.categories = await Category.findAll({
       attributes: ["title", "slug", "parentId", "id"],
       include: {
