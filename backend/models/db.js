@@ -4,6 +4,7 @@ const PostModel = require("./post");
 const CategoryModel = require("./category");
 const PostsCategoriesModel = require("./postscategories");
 const CommentModel = require("./comment");
+const ContactModel = require("./contact");
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -19,6 +20,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const Post = PostModel(sequelize, Sequelize);
 const Category = CategoryModel(sequelize, Sequelize);
 const PostsCategories = PostsCategoriesModel(sequelize, Sequelize);
+const Contact = ContactModel(sequelize, Sequelize);
 
 const Comment = CommentModel(sequelize, Sequelize);
 
@@ -45,5 +47,6 @@ module.exports = {
   Post,
   Category,
   Comment,
-  PostsCategories
+  PostsCategories,
+  Contact,
 };

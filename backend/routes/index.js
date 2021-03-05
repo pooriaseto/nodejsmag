@@ -8,11 +8,11 @@ router.get("/page/:pageNumber", homeController.indexPagination);
 router.get("/", homeController.index);
 
 router.get("/contact-us", function (req, res, next) {
-  res.render("contactUs", { title: "contactUs" });
+  res.render("contactUs", { title: "تماس با ما" });
 });
 
 router.get("/about-us", function (req, res, next) {
-  res.render("aboutUs", { title: "aboutUs" });
+  res.render("aboutUs", { title: "درباره ما" });
 });
 
 router.get(

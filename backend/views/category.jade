@@ -7,7 +7,7 @@ block content
                     nav(aria-label='breadcrumb')
                         ol.breadcrumb
                             li.breadcrumb-item
-                                a(href='#') خانه
+                                a(href=app.host) خانه
                             if(subcategory)
                                 li.breadcrumb-item.active(aria-current='page')
                                     a(href=app.host + "/" + maincategory.slug) !{maincategory.title}
@@ -49,10 +49,6 @@ block content
                                         i.icons-calendar.pl-2
                                         | در تاریخ  
                                         |!{convertToPersianDate(post.creation_time)}
-    
-                                    span
-                                        i.icons-clock.pl-2
-                                        | زمان تقریبی مطالعه 5 دقیقه
-                
+                                        
                     include components/pagination
                     +pagination(pagination)

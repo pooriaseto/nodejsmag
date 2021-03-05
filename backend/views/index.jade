@@ -129,7 +129,7 @@ block content
                                     span.ml-3
                                         i.icons-calendar.pl-2
                                         | در تاریخ  
-                                        |!{convertToPersianDate(post.creation_time)}
+                                        !{convertToPersianDate(post.creation_time)}
             
 
                     include components/pagination
@@ -156,47 +156,16 @@ block content
                             | محبوب ترین ها
 
                         .card-body
+                        each post in popularPosts
+                            - maincat = post.categories.filter(a=>a.parentId === 0)[0]
+                            - subcat = post.categories.filter(a=>a.parentId !== 0)[0]
                             .media
                                 img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-01.jpg", alt="Generic placeholder image")
-
                                 .media-body
                                     h5
-                                        a(href="#" class="sidebar__title")
-                                            | بررسی جامع گوشی Samsung Galaxy Note 20 Ultra
+                                        a(href=app.host + "/" + maincat.slug + "/" + subcat.slug + "/" + post.slug ,  class="sidebar__title")
+                                            !{post.title}
                                     span.sidebar__desc
                                         i.icons-calendar.pl-1
                                         | در
-                                        | 1399/10/15
-                            .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-02.jpg", alt="Generic placeholder image")
-
-                                .media-body
-                                    h5
-                                        a(href="#" class="sidebar__title")
-                                            | بررسی جامع گوشی Samsung Galaxy Note 20 Ultra
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
-                            .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-03.jpg", alt="Generic placeholder image")
-
-                                .media-body
-                                    h5
-                                        a(href="#" class="sidebar__title")
-                                            | بررسی جامع گوشی Samsung Galaxy Note 20 Ultra
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
-                            .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-04.jpg", alt="Generic placeholder image")
-
-                                .media-body
-                                    h5
-                                        a(href="#" class="sidebar__title")
-                                            | بررسی جامع گوشی Samsung Galaxy Note 20 Ultra
-                                    span.sidebar__desc
-                                        i.icons-calendar.pl-1
-                                        | در
-                                        | 1399/10/15
+                                        !{convertToPersianDate(post.creation_time)}

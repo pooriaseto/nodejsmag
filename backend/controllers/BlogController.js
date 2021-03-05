@@ -42,8 +42,16 @@ class BlogController {
     let relatedPosts = await Post.findAll({
       attributes: ["title", "slug", "creation_time", "imageUrl"],
       order: [["creation_time", "DESC"]],
-      limit: PostsPageSize,
+      limit: 5,
       offset: 0,
+      include: [
+        {
+          model: Category,
+          as: "categories",
+          attributes: ["title", "slug", "parentId"],
+          required: true,
+        },
+      ],
     });
 
     res.status(200).render("singlePost", {

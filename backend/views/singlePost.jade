@@ -7,7 +7,7 @@ block content
                     nav(aria-label='breadcrumb')
                         ol.breadcrumb
                             li.breadcrumb-item
-                                a(href='#') خانه
+                                a(href=app.host) خانه
                             li.breadcrumb-item
                                 a(href="/" + maincat.slug) !{maincat.title}
                             li.breadcrumb-item
@@ -92,11 +92,13 @@ block content
                                 | مطالب مرتبط
                         .card-body
                             each post in relatedPosts
+                                - maincat = post.categories.filter(a=>a.parentId === 0)[0]
+                                - subcat = post.categories.filter(a=>a.parentId !== 0)[0]
                                 .media
                                     img.sidebar__img.lazy(width='80' height='80' data-src='/assets/images/posts/post-tect-01.jpg' alt='Generic placeholder image')
                                     .media-body
                                         h5
-                                            a.sidebar__title(href='#')
+                                            a.sidebar__title(href=app.host + "/" + maincat.slug + "/" + subcat.slug + "/" + post.slug)
                                                 !{post.title}
                                         span.sidebar__desc
                                             i.icons-calendar.pl-1

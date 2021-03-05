@@ -3,7 +3,7 @@ const { PostsPageSize, mainPath } = require("../config/public");
 const DateTime = require("../utils/dateTime");
 
 class HomeController {
-  async index(req, res,next) {
+  async index(req, res, next) {
     let query = await Post.findAndCountAll({
       distinct: true,
       include: {
@@ -36,16 +36,32 @@ class HomeController {
       mainPath: mainPath,
     };
 
+    let popularPosts = await Post.findAll({
+      order: [["like", "DESC"]],
+      attributes: ["imageUrl", "title", "slug", "creation_time", "like"],
+      limit: 5,
+      offset: 0,
+      include: [
+        {
+          model: Category,
+          as: "categories",
+          attributes: ["title", "slug", "parentId"],
+          required: true,
+        },
+      ],
+    });
+
     res.status(200).render("index", {
       title: "index",
       posts: query.rows,
       subjects,
       pagination,
+      popularPosts,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
 
-  async indexPagination(req, res,next) {
+  async indexPagination(req, res, next) {
     const pageNumber = parseInt(req.params.pageNumber, 10);
 
     //check nunmber is valid or not
@@ -61,7 +77,7 @@ class HomeController {
     }
 
     let query = await Post.findAndCountAll({
-      distinct : true,
+      distinct: true,
       include: {
         model: Category,
         as: "categories",
@@ -86,10 +102,18 @@ class HomeController {
       mainPath: mainPath,
     };
 
+    let popularPosts = await Post.findAll({
+      order: [["like", "DESC"]],
+      attributes: ["imageUrl", "title", "slug", "creation_time"],
+      limit: 5,
+      offset: 0,
+    });
+
     res.status(200).render("index", {
       title: "index",
       posts: query.rows,
       pagination,
+      popularPosts,
       convertToPersianDate: DateTime.convertToPersianDate,
     });
   }
