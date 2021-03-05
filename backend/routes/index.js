@@ -4,6 +4,7 @@ var router = express.Router();
 const homeController = require("../controllers/HomeController");
 const BlogController = require("../controllers/BlogController");
 
+router.get("/page/:pageNumber", homeController.indexPagination);
 router.get("/", homeController.index);
 
 router.get("/contact-us", function (req, res, next) {

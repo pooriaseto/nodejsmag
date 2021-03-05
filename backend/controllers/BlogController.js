@@ -104,7 +104,7 @@ class BlogController {
     res.render("category", {
       maincategory,
       title: maincategory.title,
-      posts : getPosts.rows,
+      posts: getPosts.rows,
       pagination,
       convertToPersianDate: DateTime.convertToPersianDate,
     });

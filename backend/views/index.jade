@@ -8,7 +8,7 @@ block content
 
                         .posts__main
                             h4
-                                a(href="#" ,class="lazy posts__main-link", data-bg="./assets/images/posts/post-tect-01.jpg")
+                                a(href="#" ,class="lazy posts__main-link", data-bg="/assets/images/posts/post-tect-01.jpg")
                                     span.posts__main-text
                                         | آموزش نصب NodeJs
 
@@ -16,7 +16,7 @@ block content
                         .posts__list
                             .media
                                 a(href="#")
-                                    img(class="posts__img lazy", width="105", height="105",data-src="./assets/images/posts/post-tect-02.jpg", alt="Generic placeholder image")
+                                    img(class="posts__img lazy", width="105", height="105",data-src="/assets/images/posts/post-tect-02.jpg", alt="Generic placeholder image")
                                 .media-body
                                     h4
                                         a(href="#")
@@ -27,7 +27,7 @@ block content
 
                             .media
                                 a(href="#")
-                                    img(class="posts__img lazy", width="105", height="105",data-src="./assets/images/posts/post-tect-03.jpg", alt="Generic placeholder image")
+                                    img(class="posts__img lazy", width="105", height="105",data-src="/assets/images/posts/post-tect-03.jpg", alt="Generic placeholder image")
                                 .media-body
                                     h4
                                         a(href="#")
@@ -37,7 +37,7 @@ block content
 
                             .media
                                 a(href="#")
-                                    img(class="posts__img lazy", width="105", height="105",data-src="./assets/images/posts/post-tect-04.jpg", alt="Generic placeholder image")
+                                    img(class="posts__img lazy", width="105", height="105",data-src="/assets/images/posts/post-tect-04.jpg", alt="Generic placeholder image")
                                 .media-body
                                     h4
                                         a(href="#")
@@ -48,7 +48,7 @@ block content
 
                             .media
                                 a(href="#")
-                                    img(class="posts__img lazy", width="105", height="105",data-src="./assets/images/posts/post-tect-05.jpg", alt="Generic placeholder image")
+                                    img(class="posts__img lazy", width="105", height="105",data-src="/assets/images/posts/post-tect-05.jpg", alt="Generic placeholder image")
                                 .media-body
                                     h4
                                         a(href="#")
@@ -56,49 +56,49 @@ block content
                                     p.posts__desc
                                         | لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه
 
+                if(subjects)
+                    .section__header.row.align-items-center
+                        .col-6
+                                h3.section__title
+                                    | موضوعات داغ
 
-                .section__header.row.align-items-center
-                    .col-6
-                            h3.section__title
-                                | موضوعات داغ
-
-                ul.topics
-                    li.topics__item
-                        a(href="#")
-                            img(data-src="./assets/images/topics/post-sm-01.jpg", class="topics__img lazy", alt="image")
-                        h4.topics__title
+                    ul.topics
+                        li.topics__item
                             a(href="#")
-                                | کامپیوتر
-                    li.topics__item
-                        a(href="#")
-                            img(data-src="./assets/images/topics/post-sm-02.jpg", class="topics__img lazy", alt="image")
-                        h4.topics__title
+                                img(data-src="/assets/images/topics/post-sm-01.jpg", class="topics__img lazy", alt="image")
+                            h4.topics__title
+                                a(href="#")
+                                    | کامپیوتر
+                        li.topics__item
                             a(href="#")
-                                | کامپیوتر
-                    li.topics__item
-                        a(href="#")
-                            img(data-src="./assets/images/topics/post-sm-03.jpg", class="topics__img lazy", alt="image")
-                        h4.topics__title
+                                img(data-src="/assets/images/topics/post-sm-02.jpg", class="topics__img lazy", alt="image")
+                            h4.topics__title
+                                a(href="#")
+                                    | کامپیوتر
+                        li.topics__item
                             a(href="#")
-                                | کامپیوتر
-                    li.topics__item
-                        a(href="#")
-                            img(data-src="./assets/images/topics/post-sm-04.jpg", class="topics__img lazy", alt="image")
-                        h4.topics__title
+                                img(data-src="/assets/images/topics/post-sm-03.jpg", class="topics__img lazy", alt="image")
+                            h4.topics__title
+                                a(href="#")
+                                    | کامپیوتر
+                        li.topics__item
                             a(href="#")
-                                | کامپیوتر
-                    li.topics__item
-                        a(href="#")
-                            img(data-src="./assets/images/topics/post-sm-05.jpg", class="topics__img lazy", alt="image")
-                        h4.topics__title
+                                img(data-src="/assets/images/topics/post-sm-04.jpg", class="topics__img lazy", alt="image")
+                            h4.topics__title
+                                a(href="#")
+                                    | کامپیوتر
+                        li.topics__item
                             a(href="#")
-                                | کامپیوتر
-                    li.topics__item
-                        a(href="#")
-                            img(data-src="./assets/images/topics/post-sm-06.jpg", class="topics__img lazy", alt="image")
-                        h4.topics__title
+                                img(data-src="/assets/images/topics/post-sm-05.jpg", class="topics__img lazy", alt="image")
+                            h4.topics__title
+                                a(href="#")
+                                    | کامپیوتر
+                        li.topics__item
                             a(href="#")
-                                | کامپیوتر
+                                img(data-src="/assets/images/topics/post-sm-06.jpg", class="topics__img lazy", alt="image")
+                            h4.topics__title
+                                a(href="#")
+                                    | کامپیوتر
     section.section
         .container
             .row
@@ -109,7 +109,7 @@ block content
                         - var subCat = post.categories.filter((a) => a.parentId !== 0)[0];
                         article.box
                             a(href="/"+ mainCat.slug +"/" + subCat.slug +"/" + post.slug, class="box__img")
-                                img(data-src="./assets/images/"+ post.imageUrl, class="lazy", alt="image")
+                                img(data-src="/assets/images/"+ post.imageUrl, class="lazy", alt="image")
                             .box__body
                                 header
                                     ul.box__categories
@@ -130,41 +130,10 @@ block content
                                         i.icons-calendar.pl-2
                                         | در تاریخ  
                                         |!{convertToPersianDate(post.creation_time)}
-    
-                                    span
-                                        i.icons-clock.pl-2
-                                        | زمان تقریبی مطالعه 5 دقیقه
-                
+            
 
-
-
-                    .card.card--gray
-                        .card-header.text-center
-                            span.card-title
-                                | مطالب بیشتری را ببینید
-                       
-                        .card-body
-                            nav(class="d-flex justify-content-center", aria-label="Page navigation")
-                                ul.pagination
-                                    li.page-item
-                                        a(class="page-link", href="#", aria-label="Previous")
-                                            span(aria-hidden="true")
-                                                | &laquo;
-                                    li.page-item.active
-                                        a(class="page-link",href="#")
-                                            | 1
-                                    li.page-item
-                                        a(class="page-link", href="#")
-                                            | 2
-                                    li.page-item
-                                        a(class="page-link", href="#")
-                                            | 3
-                                    li.page-item
-                                        a(class="page-link", href="#", aria-label="Next")
-                                            span(aria-hidden="true")
-                                                | &raquo;
-
-
+                    include components/pagination
+                    +pagination(pagination)
 
                 aside.col-xl-4.col-lg-4.sticky
 
@@ -188,7 +157,7 @@ block content
 
                         .card-body
                             .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="./assets/images/posts/post-tect-01.jpg", alt="Generic placeholder image")
+                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-01.jpg", alt="Generic placeholder image")
 
                                 .media-body
                                     h5
@@ -199,7 +168,7 @@ block content
                                         | در
                                         | 1399/10/15
                             .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="./assets/images/posts/post-tect-02.jpg", alt="Generic placeholder image")
+                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-02.jpg", alt="Generic placeholder image")
 
                                 .media-body
                                     h5
@@ -210,7 +179,7 @@ block content
                                         | در
                                         | 1399/10/15
                             .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="./assets/images/posts/post-tect-03.jpg", alt="Generic placeholder image")
+                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-03.jpg", alt="Generic placeholder image")
 
                                 .media-body
                                     h5
@@ -221,7 +190,7 @@ block content
                                         | در
                                         | 1399/10/15
                             .media
-                                img(class="sidebar__img lazy", width="80", height="80",data-src="./assets/images/posts/post-tect-04.jpg", alt="Generic placeholder image")
+                                img(class="sidebar__img lazy", width="80", height="80",data-src="/assets/images/posts/post-tect-04.jpg", alt="Generic placeholder image")
 
                                 .media-body
                                     h5

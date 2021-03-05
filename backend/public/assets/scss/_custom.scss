@@ -453,7 +453,7 @@
         font-size: $font-size-base * 0.88;
         color: $gray-600;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         flex-wrap: wrap;
     }
 
